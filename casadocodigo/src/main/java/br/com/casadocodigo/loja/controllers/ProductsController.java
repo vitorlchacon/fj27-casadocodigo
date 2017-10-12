@@ -19,14 +19,14 @@ import br.com.casadocodigo.loja.models.Product;
 import br.com.casadocodigo.loja.validators.ProductValidator;
 
 @Controller
-@RequestMapping(value="products")
+@RequestMapping(value="/products")
 public class ProductsController {
 	
 	@Autowired
 	private ProductDAO productDAO;
 	
 	@RequestMapping(value="form")
-	public ModelAndView form(){
+	public ModelAndView form(Product product){
 		ModelAndView modelAndView = new ModelAndView("products/form");
 		modelAndView.addObject("types", BookType.values());
 		
@@ -38,11 +38,14 @@ public class ProductsController {
 	public ModelAndView save(@Valid Product product, 
 			BindingResult bindingResult, 
 			RedirectAttributes redirectAttributes){
+		System.out.println("entrou save");
 		if(bindingResult.hasErrors()){
-			return form();
+			System.out.println("erros");
+			return form(product);
 		}
 		productDAO.save(product);
 		redirectAttributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso!");
+		System.out.println("redirect");
 		return new ModelAndView("redirect:products");
 	}
 	
