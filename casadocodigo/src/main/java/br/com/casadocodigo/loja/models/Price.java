@@ -1,6 +1,7 @@
 package br.com.casadocodigo.loja.models;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -14,6 +15,8 @@ public class Price {
 	private BigDecimal value;
 	@Enumerated(EnumType.STRING)
 	private BookType bookType;
+	
+//	private Calendar dtAlteracao;
 	
 	public BigDecimal getValue() {
 		return value;
