@@ -86,5 +86,11 @@ public class Product {
 	public void setSummaryPath(String summaryPath) {
 		this.summaryPath = summaryPath;
 	}
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", title=" + title + ", description=" + description + ", numberOfPages="
+				+ numberOfPages + ", releaseDate=" + releaseDate + ", prices=" + prices + ", summaryPath=" + summaryPath
+				+ "]";
+	}
 	
 }

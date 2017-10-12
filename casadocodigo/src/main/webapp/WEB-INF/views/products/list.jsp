@@ -13,6 +13,7 @@
 		<tr>
 			<th>Título</th>
 			<th>Preços</th>
+			<th>Detalhes</th>
 		</tr>
 		<c:forEach items="${products}" var="product">
 			<tr>
@@ -21,6 +22,12 @@
 					<c:forEach items="${product.prices}" var="price">
 						${price.bookType} - ${price.value} |
 					</c:forEach>
+				</td>
+				<td>
+					<c:url value="/products/${product.id}" var="linkDetalhar"/>
+					<a href="${linkDetalhar}">
+						Detalhes
+					</a>
 				</td>
 			</tr>
 		</c:forEach>
