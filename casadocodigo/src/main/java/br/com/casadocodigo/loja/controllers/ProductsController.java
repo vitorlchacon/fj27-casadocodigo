@@ -38,14 +38,11 @@ public class ProductsController {
 	public ModelAndView save(@Valid Product product, 
 			BindingResult bindingResult, 
 			RedirectAttributes redirectAttributes){
-		System.out.println("entrou save");
 		if(bindingResult.hasErrors()){
-			System.out.println("erros");
 			return form(product);
 		}
 		productDAO.save(product);
 		redirectAttributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso!");
-		System.out.println("redirect");
 		return new ModelAndView("redirect:products");
 	}
 	
@@ -57,8 +54,10 @@ public class ProductsController {
 		return modelAndView;
 	}
 	
+	/*
 	@InitBinder
 	public void initBinder(WebDataBinder binder){
 		binder.addValidators(new ProductValidator());
 	}
+	*/
 }

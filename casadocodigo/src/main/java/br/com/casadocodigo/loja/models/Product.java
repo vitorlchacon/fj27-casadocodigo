@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Product {
@@ -16,10 +20,17 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull
+	@NotBlank
 	private String title;
 	
 	@Lob
+	@NotNull
+	@NotBlank
 	private String description;
+	
+	@NotNull
+	@Min(value=2)
 	private Integer numberOfPages;
 	
 	@ElementCollection
