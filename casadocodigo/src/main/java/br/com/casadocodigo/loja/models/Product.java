@@ -20,7 +20,7 @@ public class Product {
 	
 	@Lob
 	private String description;
-	private String numberOfPages;
+	private Integer numberOfPages;
 	
 	@ElementCollection
 	private List<Price> prices;
@@ -37,10 +37,10 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getNumberOfPages() {
+	public Integer getNumberOfPages() {
 		return numberOfPages;
 	}
-	public void setNumberOfPages(String numberOfPages) {
+	public void setNumberOfPages(Integer numberOfPages) {
 		this.numberOfPages = numberOfPages;
 	}
 	public Integer getId() {
