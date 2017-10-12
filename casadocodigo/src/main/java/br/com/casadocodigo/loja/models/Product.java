@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.models;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Product {
@@ -32,6 +34,9 @@ public class Product {
 	@NotNull
 	@Min(value=2)
 	private Integer numberOfPages;
+	
+	@DateTimeFormat
+	private Calendar releaseDate;
 	
 	@ElementCollection
 	private List<Price> prices;
@@ -66,6 +71,11 @@ public class Product {
 	public void setPrices(List<Price> prices) {
 		this.prices = prices;
 	}
-	
+	public Calendar getReleaseDate() {
+		return releaseDate;
+	}
+	public void setReleaseDate(Calendar releaseDate) {
+		this.releaseDate = releaseDate;
+	}
 	
 }

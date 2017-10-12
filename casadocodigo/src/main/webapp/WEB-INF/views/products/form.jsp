@@ -27,6 +27,11 @@
 			<form:input path="numberOfPages" id="numberOfPages"/>
 			<form:errors path="numberOfPages"/>
 		</div>
+		<div>
+			<label for = "releaseDate">Data de Lançamento</label>
+			<form:input type="date" path="releaseDate" id="releaseDate"/>
+			<form:errors path="releaseDate"/>
+		</div>
 		<c:forEach items="${types}" varStatus="status" var="bookType">
 			<div>
 				<label for="price_${bookType}">${bookType}</label>
