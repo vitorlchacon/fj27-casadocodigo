@@ -1,7 +1,6 @@
 package br.com.casadocodigo.loja.models;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
