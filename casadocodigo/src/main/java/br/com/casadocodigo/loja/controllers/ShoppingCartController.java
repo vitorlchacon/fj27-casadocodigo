@@ -1,6 +1,7 @@
 package br.com.casadocodigo.loja.controllers;
 
 import java.math.BigDecimal;
+import java.util.concurrent.Callable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,19 +45,21 @@ public class ShoppingCartController {
 	}
 
 	@RequestMapping(value="/checkout", method=RequestMethod.POST)
-	public String checkout(){
-		BigDecimal total = shoppingCart.getTotal();
-		
-		String uriToPay = "http://book-payment.herokuapp.com/payment";
-		try{
-			String response = restTemplate.postForObject(uriToPay, new PaymentData(total), String.class);
-			System.out.println(response);
+	public Callable<String> checkout(){
+		return () -> {
+			BigDecimal total = shoppingCart.getTotal();
 			
-			return("redirect:/products");
-		} catch (HttpClientErrorException exception){
-			System.out.println("Ocorreu um erro ao criar o pagamento: " + exception.getMessage());
-			return("redirect:/shopping");
-		}
+			String uriToPay = "http://book-payment.herokuapp.com/payment";
+			try{
+				String response = restTemplate.postForObject(uriToPay, new PaymentData(total), String.class);
+				System.out.println(response);
+				
+				return("redirect:/products");
+			} catch (HttpClientErrorException exception){
+				System.out.println("Ocorreu um erro ao criar o pagamento: " + exception.getMessage());
+				return("redirect:/shopping");
+			}
+		};
 	}
 
 	private ShoppingItem createItem(Integer productId, BookType bookType) {

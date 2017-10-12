@@ -1,5 +1,8 @@
 package br.com.casadocodigo.loja.conf;
 
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -26,6 +29,7 @@ import br.com.casadocodigo.loja.models.ShoppingCart;
 		ProductDAO.class, 
 		FileSaver.class,
 		ShoppingCart.class})
+@EnableCaching
 public class AppWebConfiguration {
 	
 	@Bean
@@ -65,5 +69,10 @@ public class AppWebConfiguration {
 	@Bean
 	public RestTemplate restTemplate(){
 		return new RestTemplate();
+	}
+	
+	@Bean
+	public CacheManager cacheManager(){
+		return new ConcurrentMapCacheManager();
 	}
 }
