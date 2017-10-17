@@ -11,7 +11,9 @@ public class JsonViewResolver implements ViewResolver {
 	@Override
 	public View resolveViewName(String viewName, Locale locale) throws Exception {
 		MappingJackson2JsonView view = new MappingJackson2JsonView();
-		view.setPrettyPrint(true);
+		//view.setModelKey("products"); para adicionar somente um objeto especifico do ModelAndView
+		view.setPrefixJson(true); //para colocar o titulo da chave, por exemplo "products"  
+		//view.setPrettyPrint(true);
 		return view;
 	}
 
