@@ -40,6 +40,7 @@ public class ProductsController {
     
 	@RequestMapping(method=RequestMethod.POST)
 	@Transactional
+	@CacheEvict(value="lastProducts", allEntries=true)
 	public ModelAndView save(MultipartFile summary,
 			@Valid Product product, 
 			BindingResult bindingResult, 
