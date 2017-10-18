@@ -30,6 +30,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.defaultSuccessUrl("/products")
 		.permitAll()
 		.and()
+		.rememberMe()
+		.and()
 		.logout()
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.logoutSuccessUrl("/login")
