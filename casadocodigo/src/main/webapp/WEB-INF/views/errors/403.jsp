@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ERRO</title>
-</head>
-<body>
-<h1>Você não tem permissão para acessar esta parte do sistema.</h1>
-</body>
-</html>
+<%@taglib tagdir="/WEB-INF/tags" prefix="cdc" %>
+<cdc:page title="Erro">
+	<h1>Você não tem permissão para acessar esta parte do sistema.</h1>
+</cdc:page>

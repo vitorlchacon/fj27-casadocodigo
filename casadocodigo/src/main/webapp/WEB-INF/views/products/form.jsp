@@ -3,13 +3,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" charset="text/html;charset=UTF-8">
-<title>Casa do Código</title>
-</head>
-<body>
+<%@taglib tagdir="/WEB-INF/tags" prefix="cdc" %>
+<cdc:page title="Cadastro de ">
 	<c:url value="/products" var="url"/>
 	<form:form action="${spring:mvcUrl('PC#save').build()}" method="post" commandName="product" enctype="multipart/form-data">
 		<div>
@@ -48,5 +43,4 @@
 			<input type = "submit" value="Enviar"/>
 		</div>
 	</form:form>
-</body>
-</html>
+</cdc:page>
