@@ -111,16 +111,15 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 		resolver.setContentNegotiationManager(manager);
 		return resolver;
 	}
+		
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
+	}
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LocaleChangeInterceptor());
-	}
-	
-	
-	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
 	}
 	
 	@Bean

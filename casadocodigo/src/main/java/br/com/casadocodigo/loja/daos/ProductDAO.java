@@ -7,11 +7,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.junit.runner.RunWith;
 import org.springframework.stereotype.Repository;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import br.com.casadocodigo.loja.models.BookType;
 import br.com.casadocodigo.loja.models.Product;
 
+@RunWith(SpringJUnit4ClassRunner.class)
 @Repository
 public class ProductDAO {
 	@PersistenceContext
@@ -32,7 +35,7 @@ public class ProductDAO {
 	public BigDecimal sumPricesPerType(BookType bookType) {
 		TypedQuery<BigDecimal> query = manager.createQuery(
 				"select sum(price.value) from Product p join p.prices price"
-				+ "where price.bookType = :bookType", BigDecimal.class);
+				+ " where price.bookType = :bookType", BigDecimal.class);
 		query.setParameter("bookType", bookType);
 		return query.getSingleResult();
 	}
